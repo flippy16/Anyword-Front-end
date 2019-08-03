@@ -1,16 +1,7 @@
 <template>
   <div>
-    <h1 class="mt-5" style="text-align:center;">Anywords</h1>
-    <hr>
     <center>
-      <a class="text-info" href="http://localhost:8080/">Home</a>
-      &nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;
-      <a class="text-info" href="http://localhost:8080/api">API Doc</a>
-      &nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;
-      <a class="text-info" href="http://localhost:8080/about">About</a>
-    </center>
-    <center>
-      <button @click="showMessageForm = !showMessageForm" type="submit" class="btn btn-outline-info my-5">Say Something</button>
+      <button @click="showMessageForm = !showMessageForm" type="submit" class="btn btn-outline-info mb-3">Say Something</button>
     </center>
     <div class="col-m-12">
       <div class="col-m-3">&nbsp;</div>
@@ -37,7 +28,7 @@
       <div class="col-m-3">&nbsp;</div>
     </div>
     <div class="row">
-      <div class="card col-md-3 mb-3" id="card-container" style="width:100%;" v-for="message in reversedMsg" :key="message._id">
+      <div class="card col-md-3 mb-3" style="width:100%;" v-for="message in reversedMsg" :key="message._id">
         <div class="card-body">
           <center>
             <h4 class="card-title text-dark">{{message.username}}</h4>
@@ -58,13 +49,6 @@
   img{
     width:100px;
     height: auto;
-  }
-  #card-container{
-    opacity:0;
-    transition: 1s
-  }
-  #card-container.card{
-    opacity:1; 
   }
 </style>
 
@@ -108,9 +92,8 @@ export default {
           const err = result.details.map(det => det.message).join(' ');
           this.error = err;
         } else {
-          this.error = '';
+          this.error = '  ';
           this.messages.push(result);
-          this.message.message = '';
         }
       });
     },
